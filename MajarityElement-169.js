@@ -1,20 +1,13 @@
+//HashMap Frequency counting method.
 var majorityElement = function (nums) {
-    let assign = nums[0];
-    let count = 1;
-    for (let i = 1; i < nums.length;i++) {
-        if (nums[i] === assign) {
-            count++;
-        }
-        else count--;
-        if (count === 0) {
-            assign = nums[i];
-            count = 1;
-        }
+    let count = {};
+    let n = nums.length / 2;
+    for (let num of nums) {
+        count[num] = (count[num] || 0) + 1;
+        if (count[num] > n) return num;
     }
-    return assign;
 };
-//Here we assume max count correspond to output
-//Question itself say there must be single output.
+
 let nums = [3, 3, 2];
 let result = majorityElement(nums);
 console.log("Majarity element",result);
